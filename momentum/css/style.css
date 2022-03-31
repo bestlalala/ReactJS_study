@@ -1,3 +1,50 @@
 .hidden {
     display: none;
 }
+
+body {
+    margin: 0px;
+    padding: 0px;
+    min-width: fit-content;
+}
+
+.mainbox {
+    text-align: center;
+}
+
+#clock {
+    font-size: 50px;
+    padding: 10px;
+}
+
+input {
+    width: 300px;
+    height: 30px;
+    margin-top: 20px;
+}
+
+#todo-list {
+    width: 400px;
+    padding: 30px;
+    margin: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(242, 253, 253, 0.7);
+    box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.5);
+}
+
+li {
+    text-align: left;
+}
+
+#quote {
+    font-family:'Times New Roman', Times, serif;
+    font-size: large;
+}
+
+#weather {
+    position:absolute;
+    right: 20px;
+    top: 20px;
+    color: aliceblue;
+}

@@ -7,8 +7,11 @@ const images = [
 
 const chosenImage = images[Math.floor(Math.random() * images.length)];
 
-const bgImage = document.createElement("img");
+function paintImage(chosenImage) {
+    const backgroundImage = `url("img/${chosenImage}")`;
+    document.body.style.backgroundImage = backgroundImage;
+    document.body.style.backgroundImage.width = "100%";
+    document.body.style.backgroundImage.height = "100%";
+}
 
-bgImage.src = `img/${chosenImage}`;
-
-document.body.appendChild(bgImage);
+paintImage(chosenImage);
