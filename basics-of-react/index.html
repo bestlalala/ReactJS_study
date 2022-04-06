@@ -7,7 +7,7 @@
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
-        function App() {
+        function MinutesToHours() {
             const [amount, setAmount] = React.useState(0);
             const [inverted, setinverted] = React.useState(false);
             const onChange = (event) => {
@@ -20,7 +20,6 @@
             };
             return (
                 <div>
-                    <h1>Super Converter</h1>
                     <div>
                         <label htmlFor="minutes">Minutes</label>
                         <input 
@@ -45,6 +44,14 @@
                     </div>
                     <button onClick={reset}>Reset</button>
                     <button onClick={onInvert}>{inverted ? "Turn back": "Invert"}</button>
+                </div>
+            );
+        }
+        function App() {
+            return (
+                <div>
+                    <h1>Super Converter</h1>
+                    <MinutesToHours/>
                 </div>
             );
         }
