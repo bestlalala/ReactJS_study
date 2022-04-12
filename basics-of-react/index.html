@@ -5,30 +5,36 @@
     </body>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.6/prop-types.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
-        function Btn({ text, changeValue }) {
+        function Btn({ text, fontSize = 12 }) {
             return (
                 <button 
+                    // onClick={onClick}
                     style={{
                     backgroundColor: "tomato",
                     color: "white",
                     padding: "10px 20px",
                     border:0,
                     borderRadius: 10,
+                    fontSize,
                 }}
                 >
                 {text}
             </button>
             );
         }
+        Btn.propTypes = {
+            text: PropTypes.string.isRequired,
+            fontSize: PropTypes.number,
+        };
+        const MemorizedBtn = React.memo(Btn);
         function App() {
-            const [value, setValue] = React.useState("Save Changes");
-            const changeValue = () => setValue("Revert Changes");
             return (
                 <div>
-                    <Btn text={value} onClick={changeValue} />   // 여기서 onClick은 이벤트 리스너X, props임 
-                    <Btn text="Continue"/>
+                    <MemorizedBtn text="Save Changes" fontSize = {18} />
+                    <MemorizedBtn text="Continue"/>
                 </div>
             );
 
