@@ -16,8 +16,8 @@ function Movie({ id, coverImg, title, summary, genres }) {
                 <li key={g}>{g}</li>
               ))}
             </ul>
-          </div>
-    )
+        </div>
+    );
 }
 
 Movie.propTypes = {
