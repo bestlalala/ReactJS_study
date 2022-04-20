@@ -7,17 +7,26 @@ function MovieDetail({ title, bgImage, desc, rating, coverImg, runtime, genres, 
             <img className={styles.bg} src={bgImage} />
             <div className={styles.detail}>
                 <img className={styles.coverImg} src={coverImg} alt={title}/>
-                <h2>{title}</h2>
-                <p>{genres}</p>
-                <div>
-                    <span>{runtime}분</span>
-                    <span>⭐️ rating: {rating} </span>
-                    <span>❤️ like: {like}</span>
+                <h2 className={styles.title}>{title}</h2>
+                <table className={styles.mark}>
+                    <tr>
+                        <td> ⭐️ </td>
+                        <td> ❤️ </td>
+                    </tr>
+                    <tr>
+                        <td> {rating} </td>
+                        <td> {like} </td>
+                    </tr>
+                    
+                </table>
+                <div className={styles.movie__genres}>
+                {genres.map((g) => (
+                  <span key={g}>{g}  </span>
+                ))}
                 </div>
-                <p>언어: {lang}  </p>
+                <p className={styles.info}>{runtime}분 / 언어: {lang}  </p>
                 <h4>요약</h4>
-                <p>{desc}</p>
-                
+                <p className={styles.desc}>{desc}</p>
             </div>
 
         </div>
