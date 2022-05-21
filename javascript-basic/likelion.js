@@ -42,6 +42,3 @@ console.log(typeof age);
 if (isNaN(age)) {
     console.log("Please write a number");
 }
-
-// querySelector 이용 -> 원하는 요소 가져오기!
-const content = document.querySelector(".content h1");
