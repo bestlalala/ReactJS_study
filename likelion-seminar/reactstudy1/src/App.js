@@ -1,25 +1,42 @@
-import logo from './logo.svg';
+import React, {useState} from "react";
+import PropTypes from "prop-types";
 import './App.css';
 
-function App() {
+function Btn({ text, bgcolor, changeValue }) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <button
+      onClick={changeValue}
+      style={{
+        backgroundColor: bgcolor ? "skyblue" : "pink",
+        color: "white",
+        fontSize: "20px",
+        fontWeight: "bold",
+        padding: "10px 20px",
+        border: 0,
+        borderRadius: 10,
+      }}
+      >
+        {text}
+      </button>
   );
+}
+function App() {
+  const [value, setValue] = useState("Continue");
+  const changeValue = () => setValue("Done");
+  return (
+    <div>
+      <Btn text="Save" bgcolor={true}/>
+      <Btn text={18} bgcolor={true} fontSize="Continue" />
+      <Btn text={value} bgcolor={false} changeValue={changeValue}/>
+    </div>
+
+  );
+}
+
+Btn.propTypes = {
+  text: PropTypes.string,
+  bgcolor: PropTypes.bool,
+  fontSize: PropTypes.number,
 }
 
 export default App;
