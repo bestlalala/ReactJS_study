@@ -37,6 +37,7 @@ const Card = styled.div`
   margin: 2rem;
   width: 600px;
   height: 300px;
+  box-shadow: 5px 5px 5px 5px gray;
 `;
 
 const MovieText = styled.div`
