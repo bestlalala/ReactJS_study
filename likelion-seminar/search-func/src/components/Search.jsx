@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import Movie from "./Movie";
+import styled from "styled-components";
 
 const Search = () => {
     const [loading, setLoading] = useState(true);
@@ -20,19 +22,13 @@ const Search = () => {
         e.preventDefault();
         setSearch(e.target.value);
     };
-    const onSearch = (e) => {
-        e.preventDefault();
-       // if (Search === null || search === '') // 검색어가 없을 경우 전체 리스트 반환
-            
-    };
-
 
     const filterTitle = movies.filter((p) => {
         return p.title.toLocaleLowerCase().includes(search.toLocaleLowerCase())
     })
     return(
         <>
-        <form onSubmit={e => onSearch(e)}>
+        <StyledForm>
             <input 
                 type="text" 
                 value={search} 
@@ -40,13 +36,51 @@ const Search = () => {
                 onChange={onChangeSearch}
             />
             <button type="submit">검색</button>
-        </form>
+        </StyledForm>
 
-        <div>
-            {filterTitle.map(movie => <div><span>{movie.title}</span></div>)}
-        </div>
+        {loading ? (
+          <div>
+            <h1>Movie List</h1>
+            <span>Loading...</span>
+          </div>
+         ) : (
+        <MovieList>
+            {filterTitle.map(movie => 
+                <Movie 
+                key={movie.id} 
+                id={movie.id} 
+                coverImg={movie.medium_cover_image} 
+                title_long={movie.title_long} 
+                rating={movie.rating}
+                summary={movie.summary} 
+                genres={movie.genres}
+                />
+            )}
+        </MovieList>
+         )}
         </>
     );
 };
 
 export default Search;
+
+const StyledForm = styled.form`
+    text-align: center;
+
+    & > input {
+        width: 200px;
+        height: 20px;
+        font-size: 12pt;
+    }
+
+    & > button {
+        height: 25px;
+        font-size: 12pt;
+        margin: 3px;
+    }
+`;
+const MovieList = styled.div`
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+`;
